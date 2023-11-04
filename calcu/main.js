@@ -3,6 +3,7 @@ const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
 
 let input = "";
+let stored = 0;
 
 for (let key of keys) {
     const value = key.dataset.key;
@@ -41,7 +42,28 @@ for (let key of keys) {
             }
 
             display_input.innerHTML = cleanInput(input);
-        } else {
+        }else if (value == "M") {
+            let enter = input;
+            display_input.innerHTML = "";
+
+            enter = eval(enter);
+            stored += parseInt(enter) ;
+        }else if (value == "N") {
+            let enter = input;
+            display_input.innerHTML = "";
+
+            enter = eval(enter);
+            stored -= parseInt(enter) ;
+        }else if (value == "R") {
+            let recall = stored;
+            display_output.innerHTML = recall;
+
+        }else if (value == "C") {
+            input = "";
+            stored = 0;
+            display_input.innerHTML = "";
+            display_output.innerHTML = "";
+        }else {
             if (checkInput(value)) {
                 input += value;
                 display_input.innerHTML = cleanInput(input);
@@ -72,6 +94,7 @@ function cleanInput(input) {
 
     return input_array.join("");
 }
+
 
 function cleanOutput (output) {
     let output_str = output.toString();
