@@ -17,7 +17,7 @@ for (let key of keys) {
             input = input.slice(0, -1);
             display_input.innerHTML = cleanInput(input);
         }else if (value == "=") {
-            let result = eval(input);
+            let result = eval(input).toFixed(2);
 
             display_output.innerHTML = cleanOutput(result);
         }else if (value == "B") {
@@ -46,16 +46,17 @@ for (let key of keys) {
             let enter = input;
             display_input.innerHTML = "";
 
-            enter = eval(enter);
-            stored += parseInt(enter) ;
+            enter = eval(enter).toFixed(2);
+            stored += parseFloat(enter) ;
         }else if (value == "N") {
             let enter = input;
             display_input.innerHTML = "";
 
-            enter = eval(enter);
-            stored -= parseInt(enter) ;
+            enter = eval(enter).toFixed(2);
+            stored -= parseFloat(enter) ;
         }else if (value == "R") {
-            let recall = stored;
+            let recall = parseFloat(stored);
+            recall = eval(recall).toFixed(2)
             display_output.innerHTML = recall;
 
         }else if (value == "C") {
