@@ -19,6 +19,8 @@ for (let key of keys) {
         }else if (value == "=") {
             let result = eval(input).toFixed(2);
 
+            result = parseFloat(result);
+
             display_output.innerHTML = cleanOutput(result);
         }else if (value == "B") {
             let result = parseInt(input);
@@ -56,7 +58,8 @@ for (let key of keys) {
             stored -= parseFloat(enter) ;
         }else if (value == "R") {
             let recall = parseFloat(stored);
-            recall = eval(recall).toFixed(2)
+            recall = eval(recall).toFixed(2);
+            recall = parseFloat(recall);
             display_output.innerHTML = recall;
 
         }else if (value == "C") {
