@@ -2,6 +2,8 @@ const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
 
+Base.setDecimals(100);
+
 let input = "";
 let stored = 0;
 
@@ -23,9 +25,13 @@ for (let key of keys) {
 
             display_output.innerHTML = cleanOutput(result);
         }else if (value == "B") {
-            let result = parseInt(input);
+            // let result = parseInt(input);
 
-            result = result.toString(2);
+            // result = result.toString(2);
+
+            let result = input;
+            result = Base(result);
+            result = result.toBin();
 
             display_output.innerHTML = result;
         }else if (value == "brackets") {
@@ -128,6 +134,7 @@ function checkInput(value) {
     if (value == "." && last_input == ".") {
         return false;
     }
+
 
     if (operators.includes(value)) {
         if (operators.includes(last_input)) {
